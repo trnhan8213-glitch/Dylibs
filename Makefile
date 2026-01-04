@@ -1,5 +1,5 @@
 TARGET := iphone:clang:latest:14.0
-INSTALL_TARGET_PROCESSES = SpringBoard
+SYSROOT = $(THEOS)/sdks/iPhoneOS14.5.sdk
 ARCHS = arm64 arm64e
 
 include $(THEOS)/makefiles/common.mk
@@ -7,6 +7,7 @@ include $(THEOS)/makefiles/common.mk
 TWEAK_NAME = TrNhanLiquid
 TrNhanLiquid_FILES = Tweak.x
 TrNhanLiquid_CFLAGS = -fobjc-arc
-TrNhanLiquid_FRAMEWORKS = UIKit CoreGraphics
+TrNhanLiquid_FRAMEWORKS = UIKit CoreGraphics QuartzCore
+TrNhanLiquid_PRIVATE_FRAMEWORKS = MaterialKit
 
 include $(THEOS_MAKE_PATH)/tweak.mk
