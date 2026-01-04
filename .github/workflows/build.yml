@@ -1,0 +1,30 @@
+name: Build TrNhan Dylib & Deb
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Theos
+        run: |
+          export THEOS=~/theos
+          git clone --recursive https://github.com/theos/theos.git $THEOS
+          curl -LO https://github.com/theos/sdks/archive/master.zip
+          unzip master.zip -d $THEOS/sdks
+          mv $THEOS/sdks/sdks-master/* $THEOS/sdks/
+          
+      - name: Build Package
+        run: |
+          export THEOS=~/theos
+          export PATH=$THEOS/bin:$PATH
+          make package FINALPACKAGE=1
+          
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: TrNhan-Liquid-Build
+          path: packages/*.deb
+          
