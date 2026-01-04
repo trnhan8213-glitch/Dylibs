@@ -1,0 +1,9 @@
+Package: com.trnhan.liquid
+Name: TrNhan Liquid Glass
+Depends: mobilesubstrate
+Version: 1.0.1
+Architecture: iphoneos-arm
+Description: Giao diện Liquid Glass mượt mà, giảm lag.
+Maintainer: TrNhan
+Author: TrNhan
+Section: Tweaks
